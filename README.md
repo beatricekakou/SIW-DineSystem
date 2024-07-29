@@ -1,16 +1,16 @@
 # SIW-DineSystem
 
-Questo progetto è stato realizzato per l'esame di **Sistemi Informativi sul Web**. Il sistema informativo permette agli utenti registrati di **prenotare un tavolo presso il ristorante** o di **effettuare ordini per il take away**.
+This project has been developed for the **Web Information Systems** exam. The information system allows registered users to **book a table at the restaurant** or **place take-away orders**.
 
-## Funzionalità principali:
+## Main Features:
 
-- **Registrazione e autenticazione utenti**: Gli utenti possono registrarsi e accedere al sistema.
-- **Visualizzazione del menu**: Gli utenti possono consultare il menu del ristorante.
-- **Prenotazione tavoli**: Gli utenti possono prenotare un tavolo specificando la data, l'ora e il numero di persone.
-- **Ordini take away**: Gli utenti possono effettuare ordini per il take away selezionando i piatti dal menu.
-- **Gestione dello storico ordini**: Gli utenti possono consultare lo storico dei propri ordini.
+- **User registration and authentication**: Users can register and log into the system.
+- **Menu viewing**: Users can browse the restaurant's menu.
+- **Table reservation**: Users can book a table by specifying the date, time, and number of people.
+- **Take-away orders**: Users can place take-away orders by selecting dishes from the menu.
+- **Order history management**: Users can view their order history.
 
-## Tecnologie utilizzate:
+## Technologies Used:
 
 - **Backend**: Java
 - **Database**: PostgreSQL
