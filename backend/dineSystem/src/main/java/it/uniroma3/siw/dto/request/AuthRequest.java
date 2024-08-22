@@ -1,4 +1,4 @@
-package it.uniroma3.siw.dto;
+package it.uniroma3.siw.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

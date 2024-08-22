@@ -21,7 +21,7 @@ public class User {
     private String lastName;
     private String email;
     private String cellphone;
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @ToString.Exclude
     private Credential credential;
 }

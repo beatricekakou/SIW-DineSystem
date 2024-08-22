@@ -1,6 +1,7 @@
 package it.uniroma3.siw.controller;
 
 import it.uniroma3.siw.dto.ReservationDTO;
+import it.uniroma3.siw.dto.request.CreateReservationRequest;
 import it.uniroma3.siw.service.ReservationService;
 import jakarta.mail.MessagingException;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ public class ReservationController {
 
     @PostMapping("/new")
     @CrossOrigin
-    public ResponseEntity<?> createReservation(@RequestBody ReservationDTO reservation) throws MessagingException {
+    public ResponseEntity<?> createReservation(@RequestBody CreateReservationRequest reservation) throws MessagingException {
         boolean isReservationSaved = this.reservationService.createReservation(reservation);
         return isReservationSaved ? new ResponseEntity<>(HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
@@ -30,5 +31,12 @@ public class ReservationController {
         Set<String> availableSlots = this.reservationService.findAvailableSlots(reservationDate,numberOfPeople);
         return Objects.isNull(availableSlots) ? new ResponseEntity<>(new HashSet<>(),HttpStatus.NOT_FOUND)
                 : new ResponseEntity<>(availableSlots,HttpStatus.OK);
+    }
+
+    @GetMapping("/all-by-username")
+    @CrossOrigin
+    public ResponseEntity<?> getAllReservationsByUsername(@RequestParam("username")String username) {
+        List<ReservationDTO> reservations = this.reservationService.findAllByUsername(username);
+        return (Objects.isNull(reservations) || reservations.isEmpty())? new ResponseEntity<>(HttpStatus.NOT_FOUND) : new ResponseEntity<>(reservations,HttpStatus.OK);
     }
 }

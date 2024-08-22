@@ -34,4 +34,8 @@ public class UserService {
     public Optional<User> getUserByUserName(String username) {
         return Optional.ofNullable(this.userRepository.findByUsername(username));
     }
+
+    public User findByCredential(Credential credential) {
+        return this.userRepository.findByCredential(credential);
+    }
 }

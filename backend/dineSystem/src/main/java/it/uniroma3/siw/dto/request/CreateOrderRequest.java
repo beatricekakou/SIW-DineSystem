@@ -1,4 +1,4 @@
-package it.uniroma3.siw.dto;
+package it.uniroma3.siw.dto.request;
 
 import lombok.*;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderDTO {
+public class CreateOrderRequest {
     private String userId;
-    private List<OrderDetailDTO> orderDetails;
+    private List<OrderDetailRequest> orderDetails;
 }

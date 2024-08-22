@@ -1,6 +1,6 @@
 package it.uniroma3.siw.controller;
 
-import it.uniroma3.siw.dto.AuthRequest;
+import it.uniroma3.siw.dto.request.AuthRequest;
 import it.uniroma3.siw.dto.CredentialsDTO;
 import it.uniroma3.siw.dto.UserDTO;
 import it.uniroma3.siw.service.CredentialService;

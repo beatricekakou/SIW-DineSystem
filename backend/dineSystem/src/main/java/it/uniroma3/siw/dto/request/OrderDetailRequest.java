@@ -1,4 +1,4 @@
-package it.uniroma3.siw.dto;
+package it.uniroma3.siw.dto.request;
 
 import lombok.*;
 
@@ -6,7 +6,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderDetailDTO {
+public class OrderDetailRequest {
     private Integer dishId;
     private Integer quantity;
 }

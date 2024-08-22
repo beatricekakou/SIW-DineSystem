@@ -20,7 +20,7 @@ public class Credential {
     private String username;
     private String password;
     private String role;
-    @OneToOne(mappedBy = "credential", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-    private User user;
+    /*@OneToOne(mappedBy = "credential", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    private User user;*/
 
 }

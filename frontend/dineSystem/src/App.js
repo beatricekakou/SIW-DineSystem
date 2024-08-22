@@ -6,12 +6,13 @@ import Reservation from './components/Reservation';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Logout from './components/Logout';
+import PastOrders from './components/PastOrders';
+import PastReservations from './components/PastReservations'; // Importa il nuovo componente
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [username, setUsername] = useState('');
 
-    // Verifica l'autenticazione al caricamento dell'app
     useEffect(() => {
         const token = sessionStorage.getItem('token');
         const savedUsername = sessionStorage.getItem('username');
@@ -21,19 +22,14 @@ function App() {
         }
     }, []);
 
-    // Handle login
     const handleLogin = () => {
-        const savedUsername = sessionStorage.getItem('username'); // Recupera lo username dal sessionStorage
+        const savedUsername = sessionStorage.getItem('username');
         setIsAuthenticated(true);
         setUsername(savedUsername);
     };
 
-    // Handle register
-    const handleRegister = () => {
-        // Logica aggiuntiva dopo la registrazione, se necessario
-    };
+    const handleRegister = () => {};
 
-    // Handle logout
     const handleLogout = () => {
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('username');
@@ -53,6 +49,8 @@ function App() {
                             <Route path="/order" element={<Order username={username} />} />
                             <Route path="/reservation" element={<Reservation username={username} />} />
                             <Route path="/logout" element={<Logout />} />
+                            <Route path="/past-orders" element={<PastOrders username={username} />} />
+                            <Route path="/past-reservations" element={<PastReservations username={username} />} />
                         </>
                     )}
                 </Routes>

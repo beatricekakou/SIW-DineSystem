@@ -1,11 +1,10 @@
 package it.uniroma3.siw.service;
 
 import it.uniroma3.siw.dto.ReservationDTO;
+import it.uniroma3.siw.dto.request.CreateReservationRequest;
 import it.uniroma3.siw.exception.UserNotFoundException;
-import it.uniroma3.siw.model.Reservation;
-import it.uniroma3.siw.model.ReservationTable;
-import it.uniroma3.siw.model.SlotEntity;
-import it.uniroma3.siw.model.User;
+import it.uniroma3.siw.mapper.ReservationMapper;
+import it.uniroma3.siw.model.*;
 import it.uniroma3.siw.repository.ReservationRepository;
 import it.uniroma3.siw.utils.Slot;
 import jakarta.mail.MessagingException;
@@ -22,6 +21,7 @@ public class ReservationService {
     private ReservationRepository reservationRepository;
     private ReservationTableService reservationTableService;
     private UserService userService;
+    private CredentialService credentialService;
     private EmailService emailService;
 
     /**
@@ -30,7 +30,7 @@ public class ReservationService {
      * @param reservation The reservation data transfer object.
      * @return true if The reservation was successfully created, false otherwise.
      */
-    public boolean createReservation(ReservationDTO reservation) throws MessagingException {
+    public boolean createReservation(CreateReservationRequest reservation) throws MessagingException {
         SlotEntity seating = Slot.getSlotFromTimeString(reservation.getSlotTime()).toEntity();
         ReservationTable bookableTable = this.reservationTableService.getAvailableTable(reservation.getNumberOfPeople(), reservation.getDate(), seating);
         if (Objects.isNull(bookableTable))
@@ -91,6 +91,12 @@ public class ReservationService {
         return totalSlots;
     }
 
+    public List<ReservationDTO> findAllByUsername(String username) {
+        Credential credential = this.credentialService.findByUserName(username);
+        User user = this.userService.findByCredential(credential);
+        List<Reservation> reservations = this.reservationRepository.findAllByUserId(user.getId());
+        return ReservationMapper.fromReservationEntitiesToDTOList(reservations);
+    }
     /**
      * Gets the number of tables available for a specific capacity.
      *

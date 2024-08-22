@@ -89,12 +89,14 @@ const Reservation = () => {
         setSelectedShift(shift);
     };
 
-    // Disable tiles in the calendar that are not available
+    // Disable tiles in the calendar that are not available or are in the past
     const tileDisabled = ({ date, view }) => {
         if (view === 'month') {
             const dateStr = new Date(date).toISOString().split('T')[0];
-            // Disable dates not present in the list of available dates
-            return !availableDates.includes(dateStr);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Set time to midnight to only compare dates
+            // Disable dates that are in the past or not in the available dates
+            return date < today || !availableDates.includes(dateStr);
         }
         return false;
     };
