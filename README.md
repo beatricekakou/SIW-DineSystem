@@ -12,6 +12,6 @@ This project has been developed for the **Web Information Systems** exam. The in
 
 ## Technologies Used:
 
-- **Backend**: Java
+- **Backend**: Java,Spring Boot
 - **Database**: PostgreSQL
 - **Frontend**: React.js
